@@ -3,3 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+.tarea-completada {
+  color: #28a745 !important; 
+  text-decoration: line-through;
+}

@@ -1,4 +1,3 @@
-
 const taskInput = document.querySelector('#taskInput');
 const btnAdd = document.querySelector('.btn-add');
 const totalTodos = document.querySelector('#totalTodos');
@@ -37,12 +36,12 @@ function plantillaTarea(tarea) {
     return `
         <tr>
             <td>${ tarea.id }</td>
-            <td>${ tarea.name }</td>
+            <td id="tarea-texto-${tarea.id}">${ tarea.name }</td>
             <td style="width: 7.5rem;">
                 <div class="d-flex align-items-center">
                     <div class="form-check me-3">
                         <input
-                        id="tarea1"
+                        id="checkbox-${tarea.id}"
                         class="form-check-input p-2"
                         type="checkbox"
                         ${ tarea.completed == true ? 'checked' : '' }
@@ -59,11 +58,8 @@ function plantillaTarea(tarea) {
 }
 
 function actualizarContadorTotales() {
-    const totalTodosSpan = document.getElementById('totalTodos');
-    const completedTodosSpan = document.getElementById('completedTodos');
-
-    totalTodosSpan.innerHTML = todoList.length;
-    completedTodosSpan.innerHTML = todoList.filter( todo => todo.completed ).length;
+    totalTodos.innerHTML = todoList.length;
+    completedTodos.innerHTML = todoList.filter(todo => todo.completed).length;
 }
 
 function generarTodasLasTareas() {
@@ -77,7 +73,6 @@ function generarTodasLasTareas() {
 generarTodasLasTareas();
 
 function agregarTarea(tareaInput) {
-
     const nuevaTarea = {
         id: ++todoID,
         name: tareaInput,
@@ -89,13 +84,18 @@ function agregarTarea(tareaInput) {
 }
 
 function tareaCompletada(id, estado) {
-    const tarea = todoList.find( todo => todo.id === id);
-
+    const tarea = todoList.find(todo => todo.id === id);
     if (!tarea) {
         console.error(`Tarea con ID ${id} no encontrada.`);
         return;
     }
     tarea.completed = estado;
+
+    const tareaTexto = document.getElementById(`tarea-texto-${id}`);
+    if (tareaTexto) {
+        tareaTexto.classList.toggle('tarea-completada', estado);
+    }
+
     actualizarContadorTotales();
 }
 
@@ -108,7 +108,6 @@ function eliminarTarea(tareaID) {
     todoList.splice(index, 1);
     generarTodasLasTareas();
     actualizarContadorTotales();
-    
 }
 
 btnAdd.addEventListener('click', () => {
@@ -120,4 +119,4 @@ btnAdd.addEventListener('click', () => {
     agregarTarea(tareaInput);
     taskInput.value = '';
     actualizarContadorTotales();
-})
+});
