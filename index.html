@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-light text-center">
+
+  <section class="container vh-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="card text-white bg-secondary border-light mb-3">
+        <div class="card-header border-bottom border-light">
+          <h1 class="card-title"> <i class="fa-solid fa-list-check"></i> Todo List </h1>
+        </div>
+        <main class="card-body">
+          <div class="row">
+
+            <div class="col-12 mb-3">
+              <div class="mb-4">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="taskInput" placeholder="Escribe una tarea...">
+                  <button class="btn btn-success btn-add" type="button">
+                    <i class="fas fa-plus me-1"></i> Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 mb-3">
+              <div class="card bg-transparent border-light text-start text-light">
+                <div class="card-body text-warning">
+                  <p class="card-text fw-bold">
+                    Totales: <span class="text-warning" id="totalTodos">0</span>
+                  </p>
+                  <p class="card-text fw-bold">
+                    Completadas: <span class="text-warning" id="completedTodos">0</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-8 mb-3">
+              <div class="card bg-transparent border-light text-start text-light">
+                <div class="card-body">
+                  <table id="tableTodo" class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tarea</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+</body>
+</html>
